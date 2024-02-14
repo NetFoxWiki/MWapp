@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.staticfile.net/picocss/2.0.0-rc2/pico.min.css" />
+    <title>MW & MWT 文档丨资料卡生成</title>
+    <style>
+        .level.is-mobile .level-left,
+        .level.is-mobile .level-right {
+            display: flex;
+        }
+
+        .level.is-mobile .level-item:not(:last-child) {
+            margin-bottom: 0;
+            margin-right: 0.75rem;
+        }
+
+        .box {
+            padding: 1.25rem;
+        }
+
+        .article-licensing {
+            position: relative;
+            z-index: 1;
+            box-shadow: none;
+            background: #f5f5f5;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .article-licensing:after {
+            position: absolute;
+            z-index: -1;
+            right: -500px;
+            top: -400px;
+            content: url('mw.png');
+            opacity: 0.1;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <nav>
+            <hgroup>
+                <h2>现代战舰资料卡生成</h2>
+                <p>*由 MW & MWT 文档 提供支持</p>
+            </hgroup>
+            <ul>
+                <li><a href="javascript:savePicture()" role="button" class="outline">生成图片并下载</a></li>
+            </ul>
+        </nav>
+    </main>
+    <main class="container" id="main">
+        <div class="article-licensing box">
+            <div class="licensing-title">
+                <h6>游戏昵称</h6>
+                <b id="name"></b>
+            </div>
+            <br />
+            <div class="licensing-meta level is-mobile">
+                <div class="level-left">
+                    <div class="level-item is-narrow">
+                        <div>
+                            <h6>游戏头衔</h6>
+                            <p id="title"></p>
+                        </div>
+                    </div>
+                    <div class="level-item is-narrow">
+                        <div>
+                            <h6>游戏ID</h6>
+                            <b id="gameid"></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <a id="download" download target="_blank" rel="noreferrer" style="display: none;"></a>
+</body>
+<script type="text/javascript" src="./html2canvas.min.js"></script>
+<script>
+    const Title = [
+        '<b><font color="#475164">无</font></b>',
+        '<b><font color="#f9bd10">英雄</font></b>',
+        '<b><font color="#2e317c">传奇</font></b>'
+    ]
+    class Profile {
+        name
+        title
+        gameid
+        constructor(name, title, gameid) {
+            this.name = name
+            this.title = Title[title]
+            this.gameid = gameid
+        }
+    }
+    function showResult(profile) {
+        console.log(profile)
+        document.querySelector("#name").innerText = profile.name
+        document.querySelector("#title").innerHTML = profile.title
+        document.querySelector("#gameid").innerText = profile.gameid
+    }
+    function tryGetParam(params, prop) {
+        if (params.has(prop)) {
+            return params.get(prop)
+        }
+        return ""
+    }
+    async function savePicture() {
+        await html2canvas(document.querySelector("#main"), { scale: 2 }).then(
+            async function (canvas) {
+                canvas = canvas.toDataURL("image/jpeg", 1);
+                console.log(canvas);
+                document.getElementById("download").setAttribute("href", canvas);
+                document.getElementById("download").click();
+            }
+        );
+    }
+    const urlParams = new URL(window.location.href).searchParams
+    let prof = new Profile(
+        tryGetParam(urlParams, 'name'),
+        tryGetParam(urlParams, 'title'),
+        tryGetParam(urlParams, 'gameid'),
+    )
+    showResult(prof)
+</script>
+
+</html>

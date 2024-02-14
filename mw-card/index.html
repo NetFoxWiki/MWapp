@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.staticfile.net/picocss/2.0.0-rc2/pico.min.css" />
+    <title>MW & MWT 文档丨资料卡生成</title>
+</head>
+
+<body>
+    <main class="container">
+        <nav>
+            <hgroup>
+                <h2>现代战舰资料卡生成</h2>
+                <p>*由 MW & MWT 文档 提供支持</p>
+            </hgroup>
+            <ul>
+                <li><a href="https://mwdocs.info" role="button" class="outline">MW & MWT 文档</a></li>
+                <li><a href="https://forum.mwdocs.info/" role="button" class="outline">社区</a></li>
+                <li><a href="https://afdian.net/a/mwdocs" role="button" class="outline">爱发电</a></li>
+            </ul>
+        </nav>
+        <form method="get" action="mw-card.html">
+            <label for="name">游戏昵称</label>
+            <input type="text" placeholder="游戏昵称" name="name" id="name" required />
+            <label for="title">选择头衔</label>
+            <select id="title" name="title" required>
+                <option selected disabled value="">
+                    选择头衔
+                </option>
+                <option value="0">无</option>
+                <option value="1">英雄</option>
+                <option value="2">传奇</option>
+            </select>
+            <label for="gameid">游戏ID</label>
+            <input type="tel" placeholder="游戏ID" minlength="15" name="gameid" id="gameid" required />
+            <input type="submit" value="提交"><input type="reset" />
+        </form>
+    </main>
+</body>
+
+</html>
