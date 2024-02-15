@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <link rel="stylesheet" href="https://cdn.staticfile.net/picocss/2.0.0-rc2/pico.min.css" />
     <link rel="icon" href="https://mwdocs.info/favicon.ico">
-	<title>MW & MWT 文档丨资料卡生成</title>
+    <title>MW & MWT 文档丨资料卡生成</title>
     <style>
         .level.is-mobile .level-left,
         .level.is-mobile .level-right {
@@ -18,24 +18,18 @@
             margin-right: 0.75rem;
         }
 
-        .box {
-            padding: 1.25rem;
-        }
-
         .article-licensing {
             position: relative;
             z-index: 1;
-            box-shadow: none;
             background: #f5f5f5;
-            border-radius: 4px;
             overflow: hidden;
         }
 
         .article-licensing:after {
             position: absolute;
             z-index: -1;
-            right: -500px;
-            top: -400px;
+            right: -30px;
+            top: 20px;
             content: url('mw.png');
             opacity: 0.1;
         }
@@ -54,39 +48,60 @@
             </ul>
         </nav>
     </main>
-    <main class="container" id="main">
-        <div class="article-licensing box">
-            <div class="licensing-title">
-                <h6>游戏昵称</h6>
-                <b id="name"></b>
-            </div>
-            <br />
-            <div class="licensing-meta level is-mobile">
-                <div class="level-left">
-                    <div class="level-item is-narrow">
-                        <div>
-                            <h6>游戏头衔</h6>
-                            <p id="title"></p>
+    <div class="container">
+        <main id="main">
+            <article class="article-licensing">
+                <div class="licensing-title">
+                    <h6>游戏昵称</h6>
+                    <b id="name"></b>
+                </div>
+                <br />
+                <div class="licensing-meta level is-mobile">
+                    <div class="level-left">
+                        <div class="level-item is-narrow">
+                            <div>
+                                <h6>游戏头衔</h6>
+                                <p id="title"></p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="level-item is-narrow">
-                        <div>
-                            <h6>游戏ID</h6>
-                            <b id="gameid"></b>
+                        <div class="level-item is-narrow">
+                            <div>
+                                <h6>游戏ID</h6>
+                                <b id="gameid"></b>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </main>
+                <footer>
+                    <hgroup>
+                        <h3>现代战舰资料卡生成</h3>
+                        <p><b>网站地址：https://mwapp.mwdocs.info/mw-card/</b></p>
+                    </hgroup>
+                </footer>
+            </article>
+        </main>
+    </div>
     <a id="download" download target="_blank" rel="noreferrer" style="display: none;"></a>
 </body>
 <script type="text/javascript" src="./html2canvas.min.js"></script>
 <script>
     const Title = [
         '<b><font color="#475164">无</font></b>',
+        '<b><font color="#2f90b9">舞蹈之心</font></b>',
         '<b><font color="#f9bd10">英雄</font></b>',
-        '<b><font color="#2e317c">传奇</font></b>'
+        '<b><font color="#f9bd10">禄星</font></b>',
+        '<b><font color="#f9bd10">食心人</font></b>',
+        '<b><font color="#f9bd10">糖果之王</font></b>',
+        '<b><font color="#f9bd10">派对大亨</font></b>',
+        '<b><font color="#f9bd10">冬季冠军</font></b>',
+        '<b><font color="#2e317c">传奇</font></b>',
+        '<b><font color="#2e317c">神枪手</font></b>',
+        '<b><font color="#2e317c">财神爷</font></b>',
+        '<b><font color="#2e317c">奖牌得主</font></b>',
+        '<b><font color="#2e317c">冰霜狂欢</font></b>',
+        '<b><font color="#2e317c">滑雪能手</font></b>',
+        '<b><font color="#2e317c">年兽防御者</font></b>',
+        '<b><font color="#2e317c">圣诞老人助手</font></b>'
     ]
     class Profile {
         name
@@ -113,7 +128,7 @@
     async function savePicture() {
         await html2canvas(document.querySelector("#main"), { scale: 2 }).then(
             async function (canvas) {
-                canvas = canvas.toDataURL("image/jpeg", 1);
+                canvas = canvas.toDataURL("image/png", 1);
                 console.log(canvas);
                 document.getElementById("download").setAttribute("href", canvas);
                 document.getElementById("download").click();
