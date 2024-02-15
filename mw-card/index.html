@@ -6,31 +6,38 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <link rel="stylesheet" href="https://cdn.staticfile.net/picocss/2.0.0-rc2/pico.min.css" />
     <title>MW & MWT 文档丨资料卡生成</title>
-	<link rel="icon" href="https://mwdocs.info/favicon.ico">
+    <link rel="icon" href="https://mwdocs.info/favicon.ico">
 </head>
 
 <body>
     <main class="container">
-        <nav>
-            <hgroup>
-                <h2>现代战舰资料卡生成</h2>
-                <p>*由 MW & MWT 文档 提供支持</p>
-            </hgroup>
-            <ul>
-                <li><a href="https://mwdocs.info" role="button" class="outline">MW & MWT 文档</a></li>
-                <li><a href="https://forum.mwdocs.info/" role="button" class="outline">社区</a></li>
-                <li><a href="https://afdian.net/a/mwdocs" role="button" class="outline">爱发电</a></li>
-            </ul>
-        </nav>
+        <hgroup>
+            <h2>现代战舰资料卡生成</h2>
+            <p>*由 MW & MWT 文档 提供支持</p>
+        </hgroup>
+        <a href="https://mwdocs.info" role="button" class="outline">MW & MWT 文档</a>
+        <a href="https://forum.mwdocs.info/" role="button" class="outline">社区</a>
+        <a href="https://afdian.net/a/mwdocs" role="button" class="outline">爱发电</a>
+        <hr />
         <form method="get" action="mw-card.html">
-            <label for="name">游戏昵称</label>
+            <label for="avatar"><h5>选择头像</h5></label>
+            <select id="avatar" name="avatar" required>
+                <option selected value="0">无（不显示）</option>
+                <option value="1">A测测试员</option>
+                <option value="2">PC封闭测试员</option>
+                <option value="3">社区锦标赛获胜者</option>
+                <option value="4">社区头像绘画比赛获胜者</option>
+                <option value="5">游戏管理员/版主</option>
+                <option value="6">财神爷</option>
+                <option value="7">黄金狩猎者</option>
+                <option value="8">黑客</option>
+                <option value="9">创作者</option>
+            </select>
+            <label for="name"><h5>游戏昵称</h5></label>
             <input type="text" placeholder="游戏昵称" name="name" id="name" required />
-            <label for="title">选择头衔</label>
+            <label for="title"><h5>选择头衔</h5></label>
             <select id="title" name="title" required>
-                <option selected disabled value="">
-                    选择头衔
-                </option>
-                <option value="0">无</option>
+                <option selected value="0">啥也不是</option>
                 <option value="1">舞蹈之心</option>
                 <option value="2">英雄</option>
                 <option value="3">禄星</option>
@@ -47,9 +54,12 @@
                 <option value="14">年兽防御者</option>
                 <option value="15">圣诞老人助手</option>
             </select>
-            <label for="gameid">游戏ID</label>
-            <input type="tel" placeholder="游戏ID" minlength="15" name="gameid" id="gameid" required />
-            <input type="submit" value="提交"><input type="reset" />
+            <label for="gameid"><h5>游戏ID</h5></label>
+            <input type="text" placeholder="游戏ID" minlength="15" name="gameid" id="gameid" required />
+            <label for="gameid"><h5>自我介绍（选填）</h5></label>
+            <input type="text" placeholder="自我介绍（选填）" maxlength="20" name="about" id="about" />
+            <input type="submit" value="提交">
+            <input type="reset" />
         </form>
     </main>
 </body>

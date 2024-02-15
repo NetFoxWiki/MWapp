@@ -8,6 +8,11 @@
     <link rel="icon" href="https://mwdocs.info/favicon.ico">
     <title>MW & MWT 文档丨资料卡生成</title>
     <style>
+        .avatar {
+            border-radius: 25% 10%;
+            width: 120px;
+        }
+
         .level.is-mobile .level-left,
         .level.is-mobile .level-right {
             display: flex;
@@ -28,8 +33,8 @@
         .article-licensing:after {
             position: absolute;
             z-index: -1;
-            right: -30px;
-            top: 20px;
+            right: -320px;
+            top: -200px;
             content: url('mw.png');
             opacity: 0.1;
         }
@@ -38,39 +43,42 @@
 
 <body>
     <main class="container">
-        <nav>
-            <hgroup>
-                <h2>现代战舰资料卡生成</h2>
-                <p>*由 MW & MWT 文档 提供支持</p>
-            </hgroup>
-            <ul>
-                <li><a href="javascript:savePicture()" role="button" class="outline">生成图片并下载</a></li>
-            </ul>
-        </nav>
+        <hgroup>
+            <h2>现代战舰资料卡生成</h2>
+            <p>*由 MW & MWT 文档 提供支持</p>
+        </hgroup>
+        <a href="./index.html" role="button" class="outline">返回重做</a>
+        <a href="javascript:savePicture()" role="button" class="outline">生成图片并下载</a>
     </main>
     <div class="container">
         <main id="main">
             <article class="article-licensing">
                 <div class="licensing-title">
-                    <h6>游戏昵称</h6>
-                    <b id="name"></b>
+                    <div id="avatar"></div>
                 </div>
                 <br />
                 <div class="licensing-meta level is-mobile">
                     <div class="level-left">
                         <div class="level-item is-narrow">
                             <div>
-                                <h6>游戏头衔</h6>
+                                <h5>游戏昵称</h5>
+                                <b id="name"></b>
+                            </div>
+                        </div>
+                        <div class="level-item is-narrow">
+                            <div>
+                                <h5>游戏头衔</h5>
                                 <p id="title"></p>
                             </div>
                         </div>
                         <div class="level-item is-narrow">
                             <div>
-                                <h6>游戏ID</h6>
+                                <h5>游戏ID</h5>
                                 <b id="gameid"></b>
                             </div>
                         </div>
                     </div>
+                    <font color="#646B79"><b id="about"></b></font>
                 </div>
                 <footer>
                     <hgroup>
@@ -85,9 +93,21 @@
 </body>
 <script type="text/javascript" src="./html2canvas.min.js"></script>
 <script>
+    const Avatar = [
+        '',
+        '<img class="avatar" src="./Avatar/AvatarPortrait_AlfaTesters_Widget.png" />',
+        '<img class="avatar" src="./Avatar/AvatarPortrait_CloseBetaTest_Widget.png" />',
+        '<img class="avatar" src="./Avatar/AvatarPortrait_CommunityTournament_Winner_Widget.png" />',
+        '<img class="avatar" src="./Avatar/AvatarPortrait_DrawingCompetitionWinner_Widget.png" />',
+        '<img class="avatar" src="./Avatar/AvatarPortrait_GameModerators_Widget.png" />',
+        '<img class="avatar" src="./Avatar/AvatarPortrait_GodofFortuneLNY24_Widget.png" />',
+        '<img class="avatar" src="./Avatar/AvatarPortrait_GoldHunt_Common_Widget.png" />',
+        '<img class="avatar" src="./Avatar/AvatarPortrait_Hacker_Widget.png" />',
+        '<img class="avatar" src="./Avatar/AvatarPortrait_MWPress_Widget.png" />',
+    ]
     const Title = [
-        '<b><font color="#475164">无</font></b>',
-        '<b><font color="#2f90b9">舞蹈之心</font></b>',
+        '<b>啥也不是</b>',
+        '<b><font color="#0f59a4">舞蹈之心</font></b>',
         '<b><font color="#f9bd10">英雄</font></b>',
         '<b><font color="#f9bd10">禄星</font></b>',
         '<b><font color="#f9bd10">食心人</font></b>',
@@ -104,20 +124,21 @@
         '<b><font color="#2e317c">圣诞老人助手</font></b>'
     ]
     class Profile {
-        name
-        title
-        gameid
-        constructor(name, title, gameid) {
+        constructor(avatar, name, title, gameid, about) {
+            this.avatar = Avatar[avatar]
             this.name = name
             this.title = Title[title]
             this.gameid = gameid
+            this.about = about
         }
     }
     function showResult(profile) {
         console.log(profile)
+        document.querySelector("#avatar").innerHTML = profile.avatar
         document.querySelector("#name").innerText = profile.name
         document.querySelector("#title").innerHTML = profile.title
         document.querySelector("#gameid").innerText = profile.gameid
+        document.querySelector("#about").innerText = profile.about
     }
     function tryGetParam(params, prop) {
         if (params.has(prop)) {
@@ -137,9 +158,11 @@
     }
     const urlParams = new URL(window.location.href).searchParams
     let prof = new Profile(
+        tryGetParam(urlParams, 'avatar'),
         tryGetParam(urlParams, 'name'),
         tryGetParam(urlParams, 'title'),
         tryGetParam(urlParams, 'gameid'),
+        tryGetParam(urlParams, 'about'),
     )
     showResult(prof)
 </script>
