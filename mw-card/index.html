@@ -20,9 +20,11 @@
         <a href="https://afdian.net/a/mwdocs" role="button" class="outline">爱发电</a>
         <hr />
         <form method="get" action="mw-card.html">
-            <label for="avatar"><h5>选择头像</h5></label>
+            <label for="avatar">
+                <h5>选择头像</h5>
+            </label>
             <select id="avatar" name="avatar" required>
-                <option selected value="0">无（不显示）</option>
+                <option selected value="0">无（不显示/自定义）</option>
                 <option value="1">A测测试员</option>
                 <option value="2">PC封闭测试员</option>
                 <option value="3">社区锦标赛获胜者</option>
@@ -33,9 +35,19 @@
                 <option value="8">黑客</option>
                 <option value="9">创作者</option>
             </select>
-            <label for="name"><h5>游戏昵称</h5></label>
+            <label for="freeavatar">
+                <h5>自定义头像【使用此项时请将 “选择头像” 设置为 “无（不显示/自定义）”】</h5>
+            </label>
+            <input type="url" placeholder="头像链接" name="freeavatar" id="freeavatar" />
+            <h5>或者</h5>
+            <input type="text" placeholder="QQ 号（使用 QQ 头像【我们不会保存 QQ 号】）" name="freeavatarQQ" id="freeavatarQQ" />
+            <label for="name">
+                <h5>游戏昵称</h5>
+            </label>
             <input type="text" placeholder="游戏昵称" name="name" id="name" required />
-            <label for="title"><h5>选择头衔</h5></label>
+            <label for="title">
+                <h5>选择游戏头衔</h5>
+            </label>
             <select id="title" name="title" required>
                 <option selected value="0">啥也不是</option>
                 <option value="1">舞蹈之心</option>
@@ -54,10 +66,33 @@
                 <option value="14">年兽防御者</option>
                 <option value="15">圣诞老人助手</option>
             </select>
-            <label for="gameid"><h5>游戏ID</h5></label>
+            <label for="gameid">
+                <h5>游戏ID</h5>
+            </label>
             <input type="text" placeholder="游戏ID" minlength="15" name="gameid" id="gameid" required />
-            <label for="gameid"><h5>介绍（选填）</h5></label>
-            <input type="text" placeholder="介绍（选填）" maxlength="20" name="about" id="about" />
+            <label for="gameid">
+                <h5>游戏简历</h5>
+            </label>
+            <label for="about">
+                <h6>选择擅长舰种</h6>
+            </label>
+            <select id="about" name="about" required>
+                <option selected value="0">无</option>
+                <option value="1">轻型巡航舰</option>
+                <option value="2">护卫舰</option>
+                <option value="3">驱逐舰</option>
+                <option value="4">巡洋舰</option>
+                <option value="5">战列舰</option>
+                <option value="6">航空母舰</option>
+                <option value="7">潜艇</option>
+                <option value="8">地效飞行器</option>
+                <option value="9">突击航空母舰</option>
+                <option value="10">空天航母</option>
+            </select>
+            <label for="level">
+                <h6>游戏等级</h6>
+            </label>
+            <input type="text" placeholder="游戏等级" maxlength="2" name="level" id="level" required />
             <input type="submit" value="提交">
             <input type="reset" />
         </form>

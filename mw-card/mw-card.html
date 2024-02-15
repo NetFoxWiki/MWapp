@@ -13,12 +13,11 @@
             width: 120px;
         }
 
-        .level.is-mobile .level-left,
-        .level.is-mobile .level-right {
+        .level.is-mobile .level-left {
             display: flex;
         }
 
-        .level.is-mobile .level-item:not(:last-child) {
+        .level-item {
             margin-bottom: 0;
             margin-right: 0.75rem;
         }
@@ -33,9 +32,9 @@
         .article-licensing:after {
             position: absolute;
             z-index: -1;
-            right: -320px;
-            top: -200px;
-            content: url('mw.png');
+            right: -20px;
+            top: 50px;
+            content: url('ships.png');
             opacity: 0.1;
         }
     </style>
@@ -53,29 +52,25 @@
     <div class="container">
         <main id="main">
             <article class="article-licensing">
-                <div class="licensing-title">
-                    <div id="avatar"></div>
-                </div>
+                <div id="avatar"></div>
                 <br />
-                <div class="licensing-meta level is-mobile">
-                    <div class="level-left">
-                        <div class="level-item is-narrow">
-                            <div>
-                                <h5>昵称</h5>
-                                <b id="name"></b>
-                                <br />
-                                <b id="title"></b>
-                            </div>
-                        </div>
-                        <div class="level-item is-narrow">
-                            <div>
-                                <h5>ID</h5>
-                                <b id="gameid"></b>
-                            </div>
-                        </div>
+                <div class="level-left">
+                    <div class="level-item">
+                        <h5>游戏昵称</h5>
+                        <b id="name"></b> <b id="title"></b>
                     </div>
-                    <hr>
-                    <font color="#346c9c"><b id="about"></b></font>
+                    <br>
+                    <div class="level-item">
+                        <h5>游戏ID</h5>
+                        <b id="gameid"></b>
+                    </div>
+                    <br />
+                    <div class="level-item">
+                        <h5>游戏简历</h5>
+                        <b id="about"></b>
+                        <br />
+                        <b id="level"></b>
+                    </div>
                 </div>
                 <footer>
                     <hgroup>
@@ -90,6 +85,19 @@
 </body>
 <script type="text/javascript" src="./html2canvas.min.js"></script>
 <script>
+    const About = [
+        '<b>无</b>',
+        '<b><font color="#0f59a4">轻型巡航舰</font></b>',
+        '<b><font color="#931fff">护卫舰</font></b>',
+        '<b><font color="#931fff">驱逐舰</font></b>',
+        '<b><font color="#931fff">巡洋舰</font></b>',
+        '<b><font color="#931fff">战列舰</font></b>',
+        '<b><font color="#931fff">航空母舰</font></b>',
+        '<b><font color="#931fff">潜艇</font></b>',
+        '<b><font color="#931fff">地效飞行器</font></b>',
+        '<b><font color="#931fff">突击航空母舰</font></b>',
+        '<b><font color="#931fff">空天航母</font></b>'
+    ]
     const Avatar = [
         '',
         '<img class="avatar" src="./Avatar/AvatarPortrait_AlfaTesters_Widget.png" />',
@@ -100,10 +108,10 @@
         '<img class="avatar" src="./Avatar/AvatarPortrait_GodofFortuneLNY24_Widget.png" />',
         '<img class="avatar" src="./Avatar/AvatarPortrait_GoldHunt_Common_Widget.png" />',
         '<img class="avatar" src="./Avatar/AvatarPortrait_Hacker_Widget.png" />',
-        '<img class="avatar" src="./Avatar/AvatarPortrait_MWPress_Widget.png" />',
+        '<img class="avatar" src="./Avatar/AvatarPortrait_MWPress_Widget.png" />'
     ]
     const Title = [
-        '<b><font color="#686868">啥也不是</font></b>',
+        '',
         '<b><font color="#0f59a4">舞蹈之心</font></b>',
         '<b><font color="#f9bd10">英雄</font></b>',
         '<b><font color="#f9bd10">禄星</font></b>',
@@ -121,21 +129,33 @@
         '<b><font color="#931fff">圣诞老人助手</font></b>'
     ]
     class Profile {
-        constructor(avatar, name, title, gameid, about) {
+        constructor(avatar, freeavatar, freeavatarQQ, name, title, gameid, about, level) {
             this.avatar = Avatar[avatar]
+            this.freeavatar = freeavatar
+            this.freeavatarQQ = freeavatarQQ
             this.name = name
             this.title = Title[title]
             this.gameid = gameid
-            this.about = about
+            this.about = About[about]
+            this.level = level
         }
     }
     function showResult(profile) {
         console.log(profile)
-        document.querySelector("#avatar").innerHTML = profile.avatar
+        if (profile.avatar == 0) {
+            if (profile.freeavatar == '') {
+                document.querySelector("#avatar").innerHTML = '<img class="avatar" src="https://q.qlogo.cn/headimg_dl?dst_uin=' + profile.freeavatarQQ + '&spec=640&img_type=jpg" />'
+            } else {
+                document.querySelector("#avatar").innerHTML = '<img class="avatar" src="' + profile.freeavatar + '" />'
+            }
+        } else {
+            document.querySelector("#avatar").innerHTML = profile.avatar
+        }
         document.querySelector("#name").innerText = profile.name
         document.querySelector("#title").innerHTML = profile.title
         document.querySelector("#gameid").innerText = profile.gameid
-        document.querySelector("#about").innerText = profile.about
+        document.querySelector("#about").innerHTML = '<font color="#686868">擅长舰种：</font>' + profile.about
+        document.querySelector("#level").innerHTML = '<font color="#686868">游戏等级：</font>' + profile.level
     }
     function tryGetParam(params, prop) {
         if (params.has(prop)) {
@@ -156,10 +176,13 @@
     const urlParams = new URL(window.location.href).searchParams
     let prof = new Profile(
         tryGetParam(urlParams, 'avatar'),
+        tryGetParam(urlParams, 'freeavatar'),
+        tryGetParam(urlParams, 'freeavatarQQ'),
         tryGetParam(urlParams, 'name'),
         tryGetParam(urlParams, 'title'),
         tryGetParam(urlParams, 'gameid'),
         tryGetParam(urlParams, 'about'),
+        tryGetParam(urlParams, 'level')
     )
     showResult(prof)
 </script>
