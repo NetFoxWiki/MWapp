@@ -66,7 +66,7 @@
                     <h3>请注意这条消息！</h3>
                 </header>
                 <b>
-                    为了确保图片下载可以正常的运行，请使用新的浏览器再点击下载<br />（例如 Edge、Firefox、Google Chrome）
+                    为了确保图片下载可以正常的运行，请使用新的浏览器再点击下载<br />（例如 Edge、Firefox、Google Chrome）<br /><h5>*暂不支持自定义头像（懒得修）</h5>
                 </b>
                 <footer>
                     <a href="#cancel" role="button" class="outline" data-target="modal-example"
@@ -182,7 +182,8 @@
         '<b><font color="#0f59a4">空天航母</font></b>'
     ]
     const Avatar = [
-        '<img class="avatar" src="./Avatar/info.png" />',
+        '<div></div>',
+        '',
         '<img class="avatar" src="./Avatar/AvatarPortrait_AlfaTesters_Widget.png" />',
         '<img class="avatar" src="./Avatar/AvatarPortrait_CloseBetaTest_Widget.png" />',
         '<img class="avatar" src="./Avatar/AvatarPortrait_CommunityTournament_Winner_Widget.png" />',
@@ -228,11 +229,13 @@
     }
     function showResult(profile) {
         console.log(profile)
-        if (profile.avatar == 0) {
-            if (profile.freeavatar == '') {
-                //document.querySelector("#avatar").innerHTML = '<img class="avatar" src="https://q.qlogo.cn/headimg_dl?dst_uin=' + profile.freeavatarQQ + '&spec=640&img_type=jpg" />'
+        if (profile.avatar == '') {
+            if (profile.freeavatar != '') {
+                document.querySelector("#avatar").innerHTML = '<img class="avatar" src="' + profile.freeavatar + '" />'
+            } else if (profile.freeavatarQQ != '') {
+                document.querySelector("#avatar").innerHTML = '<img class="avatar" src="https://q.qlogo.cn/headimg_dl?dst_uin=' + profile.freeavatarQQ + '&spec=640&img_type=jpg" />'
             } else {
-                //document.querySelector("#avatar").innerHTML = '<img id="base64" class="avatar" src="' + profile.freeavatar + '" />'
+                document.querySelector("#avatar").innerHTML = '<img class="avatar" src="./Avatar/info.png" />'
             }
         } else {
             document.querySelector("#avatar").innerHTML = profile.avatar

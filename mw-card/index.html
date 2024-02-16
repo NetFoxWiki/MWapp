@@ -24,19 +24,20 @@
                 <h5>选择头像</h5>
             </label>
             <select id="avatar" name="avatar" required>
-                <option selected value="0">无（不显示/自定义）</option>
-                <option value="1">A测测试员</option>
-                <option value="2">PC封闭测试员</option>
-                <option value="3">社区锦标赛获胜者</option>
-                <option value="4">社区头像绘画比赛获胜者</option>
-                <option value="5">游戏管理员/版主</option>
-                <option value="6">财神爷</option>
-                <option value="7">黄金狩猎者</option>
-                <option value="8">黑客</option>
-                <option value="9">创作者</option>
+                <option value="0" >不显示</option>
+                <option value="1">自定义</option>
+                <option value="2">A测测试员</option>
+                <option value="3">PC封闭测试员</option>
+                <option value="4">社区锦标赛获胜者</option>
+                <option value="5">社区头像绘画比赛获胜者</option>
+                <option value="6">游戏管理员/版主</option>
+                <option value="7">财神爷</option>
+                <option value="8">黄金狩猎者</option>
+                <option value="9">黑客</option>
+                <option value="10">创作者</option>
             </select>
             <label for="freeavatar">
-                <h5>自定义头像【使用此项时请将 “选择头像” 设置为 “无（不显示/自定义）”】</h5>
+                <h5>自定义头像【使用此项时请将 “选择头像” 设置为 “自定义”】</h5>
             </label>
             <input type="url" placeholder="头像链接" name="freeavatar" id="freeavatar" />
             <h5>或者</h5>
@@ -49,7 +50,7 @@
                 <h5>选择游戏头衔</h5>
             </label>
             <select id="title" name="title" required>
-                <option selected value="0">啥也不是</option>
+                <option selected value="0">无</option>
                 <option value="1">舞蹈之心</option>
                 <option value="2">英雄</option>
                 <option value="3">禄星</option>
@@ -98,7 +99,7 @@
             </label>
             <input type="text" placeholder="所在舰队（选填）" minlength="3" maxlength="18" name="club" id="club" />
             <select id="clubcolor" name="clubcolor">
-                <option selected disabled value="">选择舰队颜色</option>
+                <option selected disabled value="">选择舰队颜色（不选择默认为绿色）</option>
                 <option value="0">黑色</option>
                 <option value="1">绿色</option>
                 <option value="2">黄色</option>
