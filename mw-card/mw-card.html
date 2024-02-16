@@ -99,7 +99,7 @@
         '<b><font color="#931fff">空天航母</font></b>'
     ]
     const Avatar = [
-        '',
+        '<img class="avatar" src="./Avatar/info.png" />',
         '<img class="avatar" src="./Avatar/AvatarPortrait_AlfaTesters_Widget.png" />',
         '<img class="avatar" src="./Avatar/AvatarPortrait_CloseBetaTest_Widget.png" />',
         '<img class="avatar" src="./Avatar/AvatarPortrait_CommunityTournament_Winner_Widget.png" />',
@@ -144,9 +144,9 @@
         console.log(profile)
         if (profile.avatar == 0) {
             if (profile.freeavatar == '') {
-                document.querySelector("#avatar").innerHTML = '<img class="avatar" src="https://q.qlogo.cn/headimg_dl?dst_uin=' + profile.freeavatarQQ + '&spec=640&img_type=jpg" />'
+                //document.querySelector("#avatar").innerHTML = '<img class="avatar" src="https://q.qlogo.cn/headimg_dl?dst_uin=' + profile.freeavatarQQ + '&spec=640&img_type=jpg" />'
             } else {
-                document.querySelector("#avatar").innerHTML = '<img class="avatar" src="' + profile.freeavatar + '" />'
+                //document.querySelector("#avatar").innerHTML = '<img id="base64" class="avatar" src="' + profile.freeavatar + '" />'
             }
         } else {
             document.querySelector("#avatar").innerHTML = profile.avatar
