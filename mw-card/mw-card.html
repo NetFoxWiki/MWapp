@@ -37,6 +37,14 @@
             content: url('./img/ships.png');
             opacity: 0.1;
         }
+
+        .qr {
+            float: left;
+        }
+
+        .button {
+            float: right;
+        }
     </style>
 </head>
 
@@ -47,7 +55,27 @@
             <p>*由 MW & MWT 文档 提供支持</p>
         </hgroup>
         <a href="./index.html" role="button" class="outline">返回重做</a>
-        <a href="javascript:savePicture()" role="button" class="outline">生成图片并下载</a>
+        <section class="button" id="modal">
+            <a role="button" class="outline" data-target="modal-example" onclick="toggleModal(event)">
+                生成图片并下载
+            </a>
+        </section>
+        <dialog id="modal-example">
+            <article>
+                <header>
+                    <h3>请注意这条消息！</h3>
+                </header>
+                <b>
+                    为了确保图片下载可以正常的运行，请使用新的浏览器再点击下载<br />（例如 Edge、Firefox、Google Chrome）
+                </b>
+                <footer>
+                    <a href="#cancel" role="button" class="outline" data-target="modal-example"
+                        onclick="toggleModal(event)">取消</a>
+                    <a href="#confirm" role="button" data-target="modal-example" class="outline"
+                        onclick="javascript:savePicture()">生成图片并下载</a>
+                </footer>
+            </article>
+        </dialog>
     </main>
     <div class="container">
         <main id="main">
@@ -75,7 +103,6 @@
                     </div>
                 </div>
                 <footer id="site">
-
                 </footer>
             </article>
         </main>
@@ -84,11 +111,55 @@
 </body>
 <script type="text/javascript" src="./jscss/html2canvas.min.js"></script>
 <script>
+    const isOpenClass = "modal-is-open";
+    const openingClass = "modal-is-opening";
+    const closingClass = "modal-is-closing";
+    const scrollbarWidthCssVar = "--pico-scrollbar-width";
+    const animationDuration = 400;
+    let visibleModal = null;
+    const toggleModal = (event) => {
+        event.preventDefault();
+        const modal = document.getElementById(event.currentTarget.dataset.target);
+        if (!modal) return;
+        modal && (isModalOpen(modal) ? closeModal(modal) : openModal(modal));
+    };
+    const isModalOpen = (modal) => modal.hasAttribute("open") && modal.getAttribute("open") !== "false";
+    const openModal = (modal) => {
+        const { documentElement: html } = document;
+        const scrollbarWidth = getScrollbarWidth();
+        if (scrollbarWidth) {
+            html.style.setProperty(scrollbarWidthCssVar, `${scrollbarWidth}px`);
+        }
+        html.classList.add(isOpenClass, openingClass);
+        setTimeout(() => {
+            visibleModal = modal;
+            html.classList.remove(openingClass);
+        }, animationDuration);
+        modal.setAttribute("open", true);
+    };
+    const closeModal = (modal) => {
+        visibleModal = null;
+        const { documentElement: html } = document;
+        html.classList.add(closingClass);
+        setTimeout(() => {
+            html.classList.remove(closingClass, isOpenClass);
+            html.style.removeProperty(scrollbarWidthCssVar);
+            modal.removeAttribute("open");
+        }, animationDuration);
+    };
+    const getScrollbarWidth = () => {
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        return scrollbarWidth;
+    };
+    const isScrollbarVisible = () => {
+        return document.body.scrollHeight > screen.height;
+    };
     const Site = [
-        '<hgroup><h3>现代战舰资料卡生成</h3><p><b>网站地址：https://mwapp.mwdocs.info/mw-card/</b></p></hgroup>',
+        '<hgroup><div class= "qr"><img width="110" height="100%" src="./img/qr.png"></div><h3>现代战舰资料卡生成</h3><p><b>扫描二维码体验<br />网站地址：https://mwapp.mwdocs.info/mw-card/</br></p></hgroup > ',
         ''
     ]
     const Clubcolor = [
+        '#000000',
         '#9ede7c',
         '#c9c93b',
         '#75b7d8',
@@ -100,15 +171,15 @@
     const About = [
         '<b>无</b>',
         '<b><font color="#0f59a4">轻型巡航舰</font></b>',
-        '<b><font color="#">护卫舰</font></b>',
-        '<b><font color="#931fff">驱逐舰</font></b>',
-        '<b><font color="#931fff">巡洋舰</font></b>',
-        '<b><font color="#931fff">战列舰</font></b>',
-        '<b><font color="#931fff">航空母舰</font></b>',
-        '<b><font color="#931fff">潜艇</font></b>',
-        '<b><font color="#931fff">地效飞行器</font></b>',
-        '<b><font color="#931fff">突击航空母舰</font></b>',
-        '<b><font color="#931fff">空天航母</font></b>'
+        '<b><font color="#0f59a4">护卫舰</font></b>',
+        '<b><font color="#0f59a4">驱逐舰</font></b>',
+        '<b><font color="#0f59a4">巡洋舰</font></b>',
+        '<b><font color="#0f59a4">战列舰</font></b>',
+        '<b><font color="#0f59a4">航空母舰</font></b>',
+        '<b><font color="#0f59a4">潜艇</font></b>',
+        '<b><font color="#0f59a4">地效飞行器</font></b>',
+        '<b><font color="#0f59a4">突击航空母舰</font></b>',
+        '<b><font color="#0f59a4">空天航母</font></b>'
     ]
     const Avatar = [
         '<img class="avatar" src="./Avatar/info.png" />',
