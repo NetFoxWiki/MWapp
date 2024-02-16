@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-    <link rel="stylesheet" href="https://cdn.staticfile.net/picocss/2.0.0-rc2/pico.min.css" />
+    <link rel="stylesheet" href="./jscss/pico.min.css" />
     <link rel="icon" href="https://mwdocs.info/favicon.ico">
     <title>MW & MWT 文档丨资料卡生成</title>
     <style>
@@ -34,7 +34,7 @@
             z-index: -1;
             right: -20px;
             top: 50px;
-            content: url('ships.png');
+            content: url('./img/ships.png');
             opacity: 0.1;
         }
     </style>
@@ -70,25 +70,37 @@
                         <b id="about"></b>
                         <br />
                         <b id="level"></b>
+                        <br />
+                        <b id="club"></b>
                     </div>
                 </div>
-                <footer>
-                    <hgroup>
-                        <h3>现代战舰资料卡生成</h3>
-                        <p><b>网站地址：https://mwapp.mwdocs.info/mw-card/</b></p>
-                    </hgroup>
+                <footer id="site">
+
                 </footer>
             </article>
         </main>
     </div>
     <a id="download" download target="_blank" rel="noreferrer" style="display: none;"></a>
 </body>
-<script type="text/javascript" src="./html2canvas.min.js"></script>
+<script type="text/javascript" src="./jscss/html2canvas.min.js"></script>
 <script>
+    const Site = [
+        '<hgroup><h3>现代战舰资料卡生成</h3><p><b>网站地址：https://mwapp.mwdocs.info/mw-card/</b></p></hgroup>',
+        ''
+    ]
+    const Clubcolor = [
+        '#9ede7c',
+        '#c9c93b',
+        '#75b7d8',
+        '#b38ae7',
+        '#d69b59',
+        '#eec090',
+        '#ec5952'
+    ]
     const About = [
         '<b>无</b>',
         '<b><font color="#0f59a4">轻型巡航舰</font></b>',
-        '<b><font color="#931fff">护卫舰</font></b>',
+        '<b><font color="#">护卫舰</font></b>',
         '<b><font color="#931fff">驱逐舰</font></b>',
         '<b><font color="#931fff">巡洋舰</font></b>',
         '<b><font color="#931fff">战列舰</font></b>',
@@ -113,12 +125,12 @@
     const Title = [
         '',
         '<b><font color="#0f59a4">舞蹈之心</font></b>',
-        '<b><font color="#f9bd10">英雄</font></b>',
-        '<b><font color="#f9bd10">禄星</font></b>',
-        '<b><font color="#f9bd10">食心人</font></b>',
-        '<b><font color="#f9bd10">糖果之王</font></b>',
-        '<b><font color="#f9bd10">派对大亨</font></b>',
-        '<b><font color="#f9bd10">冬季冠军</font></b>',
+        '<b><font color="#ff9900">英雄</font></b>',
+        '<b><font color="#ff9900">禄星</font></b>',
+        '<b><font color="#ff9900">食心人</font></b>',
+        '<b><font color="#ff9900">糖果之王</font></b>',
+        '<b><font color="#ff9900">派对大亨</font></b>',
+        '<b><font color="#ff9900">冬季冠军</font></b>',
         '<b><font color="#931fff">传奇</font></b>',
         '<b><font color="#931fff">神枪手</font></b>',
         '<b><font color="#931fff">财神爷</font></b>',
@@ -129,7 +141,7 @@
         '<b><font color="#931fff">圣诞老人助手</font></b>'
     ]
     class Profile {
-        constructor(avatar, freeavatar, freeavatarQQ, name, title, gameid, about, level) {
+        constructor(avatar, freeavatar, freeavatarQQ, name, title, gameid, about, level, club, clubcolor, site) {
             this.avatar = Avatar[avatar]
             this.freeavatar = freeavatar
             this.freeavatarQQ = freeavatarQQ
@@ -138,6 +150,9 @@
             this.gameid = gameid
             this.about = About[about]
             this.level = level
+            this.club = club
+            this.clubcolor = Clubcolor[clubcolor]
+            this.site = Site[site]
         }
     }
     function showResult(profile) {
@@ -155,7 +170,15 @@
         document.querySelector("#title").innerHTML = profile.title
         document.querySelector("#gameid").innerText = profile.gameid
         document.querySelector("#about").innerHTML = '<font color="#686868">擅长舰种：</font>' + profile.about
-        document.querySelector("#level").innerHTML = '<font color="#686868">游戏等级：</font>' + profile.level
+        if (profile.level <= 30) {
+            document.querySelector("#level").innerHTML = '<font color="#686868">游戏等级：</font><font color="#63bbd0">' + profile.level + '</font>'
+        } else {
+            document.querySelector("#level").innerHTML = '<font color="#686868">游戏等级：</font><font color="#ff9900">' + profile.level + '</font>'
+        }
+        if (profile.club != '') {
+            document.querySelector("#club").innerHTML = '<font color="#686868">所在舰队：</font><font color="' + profile.clubcolor + '">' + profile.club + '</font>'
+        }
+        document.querySelector("#site").innerHTML = profile.site
     }
     function tryGetParam(params, prop) {
         if (params.has(prop)) {
@@ -182,7 +205,10 @@
         tryGetParam(urlParams, 'title'),
         tryGetParam(urlParams, 'gameid'),
         tryGetParam(urlParams, 'about'),
-        tryGetParam(urlParams, 'level')
+        tryGetParam(urlParams, 'level'),
+        tryGetParam(urlParams, 'club'),
+        tryGetParam(urlParams, 'clubcolor'),
+        tryGetParam(urlParams, 'site')
     )
     showResult(prof)
 </script>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-    <link rel="stylesheet" href="https://cdn.staticfile.net/picocss/2.0.0-rc2/pico.min.css" />
+    <link rel="stylesheet" href="./jscss/pico.min.css" />
     <title>MW & MWT 文档丨资料卡生成</title>
     <link rel="icon" href="https://mwdocs.info/favicon.ico">
 </head>
@@ -93,6 +93,27 @@
                 <h6>游戏等级</h6>
             </label>
             <input type="text" placeholder="游戏等级" maxlength="2" name="level" id="level" required />
+            <label for="level">
+                <h6>所在舰队（选填）</h6>
+            </label>
+            <input type="text" placeholder="所在舰队（选填）" minlength="3" maxlength="18" name="club" id="club" />
+            <select id="clubcolor" name="clubcolor">
+                <option selected disabled value="">选择舰队颜色</option>
+                <option value="0">绿色</option>
+                <option value="1">黄色</option>
+                <option value="2">青蓝色</option>
+                <option value="3">紫色</option>
+                <option value="4">棕色</option>
+                <option value="5">肉色</option>
+                <option value="6">红色</option>
+            </select>
+            <label>
+                <h5>是否显示网站信息？</h5>
+            </label>
+            <select id="site" name="site">
+                <option selected value="0">是</option>
+                <option value="1">否</option>
+            </select>
             <input type="submit" value="提交">
             <input type="reset" />
         </form>
