@@ -24,7 +24,7 @@
                 <h5>选择头像</h5>
             </label>
             <select id="avatar" name="avatar" required>
-                <option value="0" >不显示</option>
+                <option value="0">不显示</option>
                 <option value="1">自定义</option>
                 <option value="2">A测测试员</option>
                 <option value="3">PC封闭测试员</option>
@@ -38,6 +38,7 @@
             </select>
             <label for="freeavatar">
                 <h5>自定义头像【使用此项时请将 “选择头像” 设置为 “自定义”】</h5>
+                <h6>*暂不支持自定义头像（懒得修）</h6>
             </label>
             <input type="url" placeholder="头像链接" name="freeavatar" id="freeavatar" />
             <h5>或者</h5>
@@ -70,12 +71,16 @@
             <label for="gameid">
                 <h5>游戏ID</h5>
             </label>
-            <input type="text" placeholder="游戏ID" minlength="10" name="gameid" id="gameid" required />
+            <label>
+                <input name="gameidon" type="checkbox" role="switch" checked />
+                隐藏部分游戏ID（默认开启）
+            </label>
+            <input type="text" placeholder="游戏ID" minlength="13" name="gameid" id="gameid" required />
             <label for="gameid">
                 <h5>游戏简历</h5>
             </label>
             <label for="about">
-                <h6>选择擅长舰种</h6>
+                <h6>选择最擅长舰种</h6>
             </label>
             <select id="about" name="about" required>
                 <option selected value="0">无</option>
