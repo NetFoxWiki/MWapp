@@ -56,7 +56,6 @@
         </hgroup>
         <a href="./index.html" role="button" class="outline">返回重做</a>
         <section class="button" id="modal">
-            <a role="button" class="outline" onclick="javascript:copylink()">复制链接</a>
             <a role="button" class="outline" data-target="modal-example" onclick="toggleModal(event)">
                 生成图片并下载
             </a>
@@ -69,6 +68,7 @@
                 <b>
                     为了确保图片下载可以正常的运行，请使用新的浏览器再点击下载<br />（例如 Edge、Firefox、Google Chrome）<br />
                     <h5>*暂不支持自定义头像（懒得修）</h5>
+                    <b id="busuanzi_container_site_pv">您是第<b id="busuanzi_value_site_pv"></b>个使用网站的人</b>
                 </b>
                 <footer>
                     <a role="button" class="outline" data-target="modal-example" onclick="toggleModal(event)">取消</a>
@@ -112,6 +112,7 @@
     </div>
     <a id="download" download target="_blank" rel="noreferrer" style="display: none;"></a>
 </body>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <script type="text/javascript" src="./jscss/html2canvas.min.js"></script>
 <script type="text/javascript" src="./jscss/mwcard.js"></script>
 

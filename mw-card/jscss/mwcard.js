@@ -193,12 +193,6 @@ async function savePicture() {
         }
     );
 }
-function copylink() {
-    document.body.addEventListener("click", async (e) => {
-        await navigator.clipboard.writeText(window.location.href);
-        alert("复制成功！");
-    });
-}
 const urlParams = new URL(window.location.href).searchParams
 let prof = new Profile(
     tryGetParam(urlParams, 'avatar'),
