@@ -27,6 +27,9 @@
             z-index: 1;
             background: #f0f0f0;
             overflow: hidden;
+            margin-bottom: var(--pico-block-spacing-vertical);
+            padding: var(--pico-block-spacing-vertical) var(--pico-block-spacing-horizontal);
+            border-radius: var(--pico-border-radius);
         }
 
         .article-licensing:after {
@@ -81,8 +84,8 @@
     <div class="container">
         <h6>*复制此链接即可在线查看资料卡</h6>
         <span id="link"></span>
-        <main id="main">
-            <article class="article-licensing">
+        <main id="main" style="width: 800; height: 600">
+            <div class="article-licensing">
                 <div id="avatar"></div>
                 <br />
                 <div class="level-left">
@@ -107,7 +110,7 @@
                 </div>
                 <span id="site">
                 </span>
-            </article>
+            </div>
         </main>
     </div>
     <a id="download" download target="_blank" rel="noreferrer" style="display: none;"></a>

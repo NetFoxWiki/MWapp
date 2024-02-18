@@ -23,8 +23,6 @@
  * 
  *            佛祖保佑     屎山代码     永无BUG
  */
-let gameidMin = 1111;
-let gameidMax = 9999;
 let visibleModal = null;
 const isOpenClass = "modal-is-open";
 const openingClass = "modal-is-opening";
@@ -70,7 +68,7 @@ const isScrollbarVisible = () => {
     return document.body.scrollHeight > screen.height;
 };
 const Site = [
-    '<br /><br /><article><hgroup><div class= "qr"><img width="110" height="100%" src="./img/qr.png"></div><h3>现代战舰资料卡生成</h3><p><b>扫描二维码体验<br />https://mwapp.mwdocs.info/mw-card/</br></p></hgroup></article>',
+    '<br /><div class= "qr"><img width="110" height="100%" src="./img/qr.png"></div><hgroup><h3>现代战舰资料卡生成</h3><p><b>扫描二维码体验<br />https://mwapp.mwdocs.info/mw-card/</br></p></hgroup>',
     ''
 ]
 const Clubcolor = [
@@ -135,7 +133,7 @@ class Profile {
         this.name = name
         this.title = Title[title]
         if (gameid != "" && gameidon == "on") {
-            this.gameid = gameid.substring(0, 3) + "****" + gameid.substring(7)
+            this.gameid = gameid.substring(0, 7) + "****（隐私）"
         } else if (gameid != "") {
             this.gameid = gameid
         } else {
@@ -145,7 +143,11 @@ class Profile {
         this.about = About[about]
         this.level = level
         this.club = club
-        this.clubcolor = Clubcolor[clubcolor]
+        if (clubcolor == '') {
+            this.clubcolor = 1
+        } else {
+            this.clubcolor = Clubcolor[clubcolor]
+        }
         this.site = Site[site]
     }
 }
