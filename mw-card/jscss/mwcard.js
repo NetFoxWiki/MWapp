@@ -186,7 +186,11 @@ function tryGetParam(params, prop) {
     return ""
 }
 async function savePicture() {
-    await html2canvas(document.querySelector("#main"), { scale: 2 }).then(
+    await html2canvas(document.querySelector("#main"), {
+        windowHeight: 700,
+        windowWidth: 452,
+        scale: 2
+    }).then(
         async function (canvas) {
             canvas = canvas.toDataURL("image/png", 1);
             console.log(canvas);
