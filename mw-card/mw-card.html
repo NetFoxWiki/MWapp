@@ -8,9 +8,20 @@
     <link rel="icon" href="https://mwdocs.info/favicon.ico">
     <title>MW & MWT 文档丨资料卡生成</title>
     <style>
+        .avatar-box {
+            position: relative;
+            width: 140px;
+        }
+
         .avatar {
             border-radius: 25% 10%;
-            width: 120px;
+            width: 140px;
+        }
+
+        .avatar-right {
+            position: absolute;
+            bottom: 1px;
+            right: 10px;
         }
 
         .level.is-mobile .level-left {
@@ -52,7 +63,6 @@
 
 <body>
     <main class="container">
-        
         <hgroup>
             <h2>现代战舰资料卡生成</h2>
             <p>*由 MW & MWT 文档 提供支持</p>
@@ -86,8 +96,10 @@
         <span id="link"></span>
         <main id="main">
             <div class="article-licensing">
-                <img class="article-licensingafter" src="img/ships.png"/>
+                <img class="article-licensingafter" src="img/ships.png" />
+                <div class="avatar-box">
                 <div id="avatar"></div>
+                </div>
                 <br />
                 <div class="level-left">
                     <div class="level-item">

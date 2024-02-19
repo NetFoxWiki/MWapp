@@ -127,7 +127,15 @@ const Title = [
 ]
 class Profile {
     constructor(avatar, freeavatar, freeavatarQQ, name, title, gameid, gameidon, about, level, club, clubcolor, site) {
-        this.avatar = Avatar[avatar]
+        if (title == 2 && avatar != 0 && avatar != 1) {
+            this.avatar = Avatar[avatar] + '<div class="avatar-right"><img src="./title/PlayerRarityHero.png" width="50" height="100%" /></div>'
+        } else if (title == 8 && avatar != 0 && avatar != 1) {
+            this.avatar = Avatar[avatar] + '<div class="avatar-right"><img src="./title/PlayerRarityLegend.png" width="50" height="100%" /></div>'
+        } else {
+            this.avatar = Avatar[avatar]
+        }
+        this.title28 = title
+        this.titleavatar = avatar
         this.freeavatar = freeavatar
         this.freeavatarQQ = freeavatarQQ
         this.name = name
@@ -141,7 +149,13 @@ class Profile {
         }
         //this.gameid = gameid
         this.about = About[about]
-        this.level = level
+        if (level < 0) {
+            this.level = 1
+        } else if (level > 61) {
+            this.level = 61
+        } else {
+            this.level = level
+        }
         this.club = club
         if (clubcolor == '') {
             this.clubcolor = 1
@@ -155,11 +169,29 @@ function showResult(profile) {
     console.log(profile)
     if (profile.avatar == '') {
         if (profile.freeavatar != '') {
-            document.querySelector("#avatar").innerHTML = '<img class="avatar" src="' + profile.freeavatar + '" />'
+            if (profile.title28 == 2 && profile.titleavatar == 1) {
+                document.querySelector("#avatar").innerHTML = '<img class="avatar" src="' + profile.freeavatar + '" />' + '<div class="avatar-right"><img src="./title/PlayerRarityHero.png" width="50" height="100%" /></div>'
+            } else if (profile.title28 == 8 && profile.titleavatar == 1 ) {
+                document.querySelector("#avatar").innerHTML = '<img class="avatar" src="' + profile.freeavatar + '" />' + '<div class="avatar-right"><img src="./title/PlayerRarityLegend.png" width="50" height="100%" /></div>'
+            } else {
+                document.querySelector("#avatar").innerHTML = '<img class="avatar" src="' + profile.freeavatar + '" />'
+            }
         } else if (profile.freeavatarQQ != '') {
-            document.querySelector("#avatar").innerHTML = '<img class="avatar" src="https://q.qlogo.cn/headimg_dl?dst_uin=' + profile.freeavatarQQ + '&spec=640&img_type=jpg" />'
+            if (profile.title28 == 2 && profile.titleavatar == 1) {
+                document.querySelector("#avatar").innerHTML = '<img class="avatar" src="https://q.qlogo.cn/headimg_dl?dst_uin=' + profile.freeavatarQQ + '&spec=640&img_type=jpg" />' + '<div class="avatar-right"><img src="./title/PlayerRarityHero.png" width="50" height="100%" /></div>'
+            } else if (profile.title28 == 8 && profile.titleavatar == 1 ) {
+                document.querySelector("#avatar").innerHTML = '<img class="avatar" src="https://q.qlogo.cn/headimg_dl?dst_uin=' + profile.freeavatarQQ + '&spec=640&img_type=jpg" />' + '<div class="avatar-right"><img src="./title/PlayerRarityLegend.png" width="50" height="100%" /></div>'
+            } else {
+                document.querySelector("#avatar").innerHTML = '<img class="avatar" src="https://q.qlogo.cn/headimg_dl?dst_uin=' + profile.freeavatarQQ + '&spec=640&img_type=jpg" />'
+            }
         } else {
-            document.querySelector("#avatar").innerHTML = '<img class="avatar" src="./Avatar/info.png" />'
+            if (profile.title28 == 2 && profile.titleavatar == 1) {
+                document.querySelector("#avatar").innerHTML = '<img class="avatar" src="./Avatar/info.png" />' + '<div class="avatar-right"><img src="./title/PlayerRarityHero.png" width="50" height="100%" /></div>'
+            } else if (profile.title28 == 8 && profile.titleavatar == 1 ) {
+                document.querySelector("#avatar").innerHTML = '<img class="avatar" src="./Avatar/info.png" />' + '<div class="avatar-right"><img src="./title/PlayerRarityLegend.png" width="50" height="100%" /></div>'
+            } else {
+                document.querySelector("#avatar").innerHTML = '<img class="avatar" src="./Avatar/info.png" />'
+            }
         }
     } else {
         document.querySelector("#avatar").innerHTML = profile.avatar
