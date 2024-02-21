@@ -16,13 +16,11 @@
             <p>*由 MW & MWT 文档 提供支持丨B站UP <a href="https://space.bilibili.com/1093209533">阿布咕咕</a> 制作</p>
         </hgroup>
         <a href="https://mwdocs.info" role="button" class="outline">MW & MWT 文档</a>
-        <a href="https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=O_uVziCfUhzQseq9rCrjxwayDJDffOo9&authKey=ervLfyvDdYRlPRA%2FLK7NStIJgj23OlOZ1SyGa3aOd1XMUmUEsbW7iRi7mfrELOLX&noverify=0&group_code=421836260"
-            role="button" class="outline">联系开发组</a>
         <a href="https://afdian.net/a/mwdocs" role="button" class="outline">爱发电</a>
         <hr />
         <form method="get" action="mw-card.html">
             <label for="avatar">
-                <h5>选择头像</h5>
+                <h5>选择头像：</h5>
             </label>
             <select id="avatar" name="avatar" required>
                 <option value="0">不显示</option>
@@ -37,33 +35,31 @@
                 <option value="9">黑客</option>
                 <option value="10">创作者</option>
             </select>
-            <div style="border-style:solid; border-color:red; padding: 20px ">
                 <label for="freeavatar">
-                    <h5>自定义头像【使用此项时请将 “选择头像” 设置为 “自定义”】</h5>
+                    <h5>自定义头像【使用此项时请将 “选择头像” 设置为 “自定义”】：</h5>
                     <h6>*暂不支持自定义头像（懒得修）</h6>
                 </label>
-                <input type="url" placeholder="头像链接" name="freeavatar" id="freeavatar" />
+                <input type="url" placeholder="头像链接" name="freeavatar" id="freeavatar" disabled/>
                 <h5>或者</h5>
-                <input type="text" placeholder="QQ 号（使用 QQ 头像【我们不会保存 QQ 号】）" name="freeavatarQQ" id="freeavatarQQ" />
-            </div>
+                <input type="text" placeholder="QQ 号（使用 QQ 头像【我们不会保存 QQ 号】）" name="freeavatarQQ" id="freeavatarQQ" disabled/>
             <br />
             <label for="name">
-                <h5>游戏昵称</h5>
+                <h5>游戏昵称：</h5>
             </label>
             <input type="text" placeholder="游戏昵称" name="name" id="name" required />
             <label for="title">
-                <h5>选择游戏头衔</h5>
+                <h5>选择游戏头衔：</h5>
             </label>
             <select id="title" name="title" required>
                 <option selected value="0">无</option>
                 <option value="1">舞蹈之心</option>
-                <option value="2">英雄</option>
+                <option value="2">英雄（特殊）</option>
                 <option value="3">禄星</option>
                 <option value="4">食心人</option>
                 <option value="5">糖果之王</option>
                 <option value="6">派对大亨</option>
                 <option value="7">冬季冠军</option>
-                <option value="8">传奇</option>
+                <option value="8">传奇（特殊）</option>
                 <option value="9">神枪手</option>
                 <option value="10">财神爷</option>
                 <option value="11">奖牌得主</option>
@@ -73,7 +69,7 @@
                 <option value="15">圣诞老人助手</option>
             </select>
             <label for="gameid">
-                <h5>游戏ID</h5>
+                <h5>游戏ID：</h5>
             </label>
             <label>
                 <input name="gameidon" type="checkbox" role="switch" checked />
@@ -81,7 +77,7 @@
             </label>
             <input type="text" placeholder="游戏ID" minlength="13" name="gameid" id="gameid" required />
             <label for="gameid">
-                <h5>游戏简历</h5>
+                <h5>游戏简历：</h5>
             </label>
             <label for="about">
                 <h6>选择最擅长舰种</h6>
@@ -119,7 +115,7 @@
                 <option value="7">红色</option>
             </select>
             <label>
-                <h5>是否显示网站信息？</h5>
+                <h5>是否显示网站信息？（默认为是，将会显示网站二维码与链接）</h5>
             </label>
             <select id="site" name="site">
                 <option selected value="0">是</option>

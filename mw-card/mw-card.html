@@ -54,10 +54,6 @@
         .qr {
             float: left;
         }
-
-        .button {
-            float: right;
-        }
     </style>
 </head>
 
@@ -67,8 +63,8 @@
             <h2>现代战舰资料卡生成</h2>
             <p>*由 MW & MWT 文档 提供支持丨B站UP <a href="https://space.bilibili.com/1093209533">阿布咕咕</a> 制作</p>
         </hgroup>
-        <a href="./index.html" role="button" class="outline">返回重做</a>
-        <section class="button" id="modal">
+        <section id="modal">
+            <a href="./index.html" role="button" class="outline">返回重做</a>
             <a role="button" class="outline" data-target="modal-example" onclick="toggleModal(event)">
                 生成图片并下载
             </a>
@@ -98,7 +94,7 @@
             <div class="article-licensing">
                 <img class="article-licensingafter" src="img/ships.png" />
                 <div class="avatar-box">
-                <div id="avatar"></div>
+                    <div id="avatar"></div>
                 </div>
                 <br />
                 <div class="level-left">
