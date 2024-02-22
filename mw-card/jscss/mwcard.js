@@ -105,7 +105,8 @@ const Avatar = [
     '<img class="avatar" src="./Avatar/AvatarPortrait_GodofFortuneLNY24_Widget.png" />',
     '<img class="avatar" src="./Avatar/AvatarPortrait_GoldHunt_Common_Widget.png" />',
     '<img class="avatar" src="./Avatar/AvatarPortrait_Hacker_Widget.png" />',
-    '<img class="avatar" src="./Avatar/AvatarPortrait_MWPress_Widget.png" />'
+    '<img class="avatar" src="./Avatar/AvatarPortrait_MWPress_Widget.png" />',
+    '<img class="avatar" src="./Avatar/AvatarPortrait_MWGameDevelopersMale_Widget.png" />',
 ]
 const Title = [
     '',
@@ -116,14 +117,24 @@ const Title = [
     '<b><font color="#ff9900">糖果之王</font></b>',
     '<b><font color="#ff9900">派对大亨</font></b>',
     '<b><font color="#ff9900">冬季冠军</font></b>',
+    '<b><font color="#ff9900">黄金大师</font></b>',
+    '<b><font color="#ff9900">连队领航员</font></b>',
     '<b><font color="#931fff">传奇</font></b>',
+    '<b><font color="#931fff">教官</font></b>',
+    '<b><font color="#931fff">创作者</font></b>',
+    '<b><font color="#931fff">管理员</font></b>',
     '<b><font color="#931fff">神枪手</font></b>',
     '<b><font color="#931fff">财神爷</font></b>',
+    '<b><font color="#931fff">祖灵之者</font></b>',
+    '<b><font color="#931fff">沙漠刺客</font></b>',
+    '<b><font color="#931fff">财富猎人</font></b>',
     '<b><font color="#931fff">奖牌得主</font></b>',
     '<b><font color="#931fff">冰霜狂欢</font></b>',
     '<b><font color="#931fff">滑雪能手</font></b>',
+    '<b><font color="#931fff">高级管理员</font></b>',
     '<b><font color="#931fff">年兽防御者</font></b>',
-    '<b><font color="#931fff">圣诞老人助手</font></b>'
+    '<b><font color="#931fff">圣诞老人助手</font></b>',
+    '<b><font color="#931fff">Discord 管理员</font></b>'
 ]
 class Profile {
     constructor(avatar, freeavatar, freeavatarQQ, name, title, gameid, gameidon, about, level, club, clubcolor, site) {
