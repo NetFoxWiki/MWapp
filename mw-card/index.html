@@ -19,7 +19,7 @@
         <a href="https://afdian.net/a/mwdocs" role="button" class="outline">爱发电</a>
         <hr />
         <form method="get" action="mw-card.html">
-            <label for="avatar">
+            <label>
                 <h5>选择头像：</h5>
             </label>
             <select id="avatar" name="avatar" required>
@@ -36,20 +36,22 @@
                 <option value="10">创作者</option>
                 <option value="11">开发者</option>
             </select>
-                <label for="freeavatar">
-                    <h5>自定义头像【使用此项时请将 “选择头像” 设置为 “自定义”】：</h5>
-                    <h6>*暂不支持自定义头像（懒得修）</h6>
-                </label>
-                <input type="url" placeholder="头像链接" name="freeavatar" id="freeavatar" disabled/>
-                <h5>或者</h5>
-                <input type="text" placeholder="QQ 号（使用 QQ 头像【我们不会保存 QQ 号】）" name="freeavatarQQ" id="freeavatarQQ" disabled/>
+            <label>
+                <h5>自定义头像【使用此项时请将 “选择头像” 设置为 “自定义”】：</h5>
+                <h6>*暂不支持自定义头像（懒得修）</h6>
+            </label>
+            <input type="url" placeholder="头像链接" name="freeavatar" id="freeavatar" disabled />
+            <h5>或者</h5>
+            <input type="text" placeholder="QQ 号（使用 QQ 头像【我们不会保存 QQ 号】）" name="freeavatarQQ" id="freeavatarQQ"
+                disabled />
             <br />
-            <label for="name">
+            <label>
                 <h5>游戏昵称：</h5>
             </label>
             <input type="text" placeholder="游戏昵称" name="name" id="name" required />
-            <label for="title">
-                <h5>选择游戏头衔：</h5>
+            <h5>选择游戏头衔：</h5>
+            <label>
+                <h6>选择正常游戏头衔</h6>
             </label>
             <select id="title" name="title" required>
                 <option selected value="0">无</option>
@@ -63,23 +65,29 @@
                 <option value="8">黄金大师</option>
                 <option value="9">连队领航员</option>
                 <option value="10">传奇（特殊）</option>
-                <option value="11">教官</option>
-                <option value="12">创作者</option>
-                <option value="13">管理员</option>
-                <option value="14">神枪手</option>
-                <option value="15">财神爷</option>
-                <option value="16">祖灵之者</option>
-                <option value="17">沙漠刺客</option>
-                <option value="18">财富猎人</option>
-                <option value="19">奖牌得主</option>
-                <option value="20">冰霜狂欢</option>
-                <option value="21">滑雪能手</option>
-                <option value="22">高级管理员</option>
-                <option value="23">年兽防御者</option>
-                <option value="24">圣诞老人助手</option>
-                <option value="25">Discord 管理员</option>
+                <option value="11">神枪手</option>
+                <option value="12">财神爷</option>
+                <option value="13">祖灵之者</option>
+                <option value="14">沙漠刺客</option>
+                <option value="15">财富猎人</option>
+                <option value="16">奖牌得主</option>
+                <option value="17">冰霜狂欢</option>
+                <option value="18">滑雪能手</option>
+                <option value="19">年兽防御者</option>
+                <option value="20">圣诞老人助手</option>
             </select>
-            <label for="gameid">
+            <label>
+                <h6>选择职位游戏头衔</h6>
+            </label>
+            <select id="titlework" name="titlework" required>
+                <option selected value="0">无</option>
+                <option value="1">教官</option>
+                <option value="2">创作者</option>
+                <option value="3">管理员</option>
+                <option value="4">高级管理员</option>
+                <option value="5">Discord 管理员</option>
+            </select>
+            <label>
                 <h5>游戏ID：</h5>
             </label>
             <label>
@@ -87,10 +95,10 @@
                 隐藏部分游戏ID（默认开启）
             </label>
             <input type="text" placeholder="游戏ID" minlength="13" name="gameid" id="gameid" required />
-            <label for="gameid">
+            <label>
                 <h5>游戏简历：</h5>
             </label>
-            <label for="about">
+            <label>
                 <h6>选择最擅长舰种</h6>
             </label>
             <select id="about" name="about" required>
@@ -106,11 +114,11 @@
                 <option value="9">突击航空母舰</option>
                 <option value="10">空天航母</option>
             </select>
-            <label for="level">
+            <label>
                 <h6>游戏等级</h6>
             </label>
             <input type="number" placeholder="游戏等级" maxlength="2" name="level" id="level" required />
-            <label for="level">
+            <label>
                 <h6>所在舰队（选填）</h6>
             </label>
             <input type="text" placeholder="所在舰队（选填）" minlength="3" maxlength="18" name="club" id="club" />
@@ -132,6 +140,10 @@
                 <option selected value="0">是</option>
                 <option value="1">否</option>
             </select>
+            <label>
+                <h5>自定义背景颜色【默认为 #f0f0f0】</h5>
+            </label>
+            <input type="color" value="#f0f0f0" name="bgcolor" id="bgcolor" />
             <input type="submit" value="提交">
             <input type="reset" />
         </form>

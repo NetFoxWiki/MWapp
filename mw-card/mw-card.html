@@ -34,10 +34,9 @@
         }
 
         .article-licensing {
+            overflow: hidden;
             position: relative;
             z-index: 1;
-            background: #f0f0f0;
-            overflow: hidden;
             margin-bottom: var(--pico-block-spacing-vertical);
             padding: var(--pico-block-spacing-vertical) var(--pico-block-spacing-horizontal);
             border-radius: var(--pico-border-radius);
@@ -46,6 +45,7 @@
         .article-licensingafter {
             position: absolute;
             z-index: -1;
+            background-color: #f0f0f0;
             right: -20px;
             top: 50px;
             opacity: 0.1;
@@ -63,10 +63,10 @@
             <h2>现代战舰资料卡生成</h2>
             <p>*由 MW & MWT 文档 提供支持丨B站UP <a href="https://space.bilibili.com/1093209533">阿布咕咕</a> 制作</p>
         </hgroup>
-            <a href="./index.html" role="button" class="outline">返回重做</a>
-            <a role="button" class="outline" data-target="modal-example" onclick="toggleModal(event)">
-                生成图片并下载
-            </a>
+        <a href="./index.html" role="button" class="outline">返回重做</a>
+        <a role="button" class="outline" data-target="modal-example" onclick="toggleModal(event)">
+            生成图片并下载
+        </a>
         <dialog id="modal-example">
             <article>
                 <header>
@@ -89,7 +89,7 @@
         <h6>*复制此链接即可在线查看资料卡</h6>
         <span id="link"></span>
         <main id="main">
-            <div class="article-licensing">
+            <div class="article-licensing" id="bgcolor">
                 <img class="article-licensingafter" src="img/ships.png" />
                 <div class="avatar-box">
                     <div id="avatar"></div>
@@ -98,7 +98,10 @@
                 <div class="level-left">
                     <div class="level-item">
                         <h5>游戏昵称</h5>
-                        <b id="name"></b> <b id="title"></b>
+                        <b id="name"></b>
+                        <b id="title"></b>
+                        <br>
+                        <b id="titlework"></b>
                     </div>
                     <br>
                     <div class="level-item">
