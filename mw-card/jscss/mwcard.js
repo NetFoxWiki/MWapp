@@ -23,6 +23,9 @@
  * 
  *            佛祖保佑     屎山代码     永无BUG
  */
+
+//控制弹窗
+
 let visibleModal = null;
 const isOpenClass = "modal-is-open";
 const openingClass = "modal-is-opening";
@@ -67,6 +70,10 @@ const getScrollbarWidth = () => {
 const isScrollbarVisible = () => {
     return document.body.scrollHeight > screen.height;
 };
+
+//网站运行
+
+//素材
 const Site = [
     '<br /><div class= "qr"><img width="110" height="100%" src="./img/qr.png"></div><hgroup><h3>现代战舰资料卡生成</h3><p><b>扫描二维码体验<br />https://mwapp.mwdocs.info/mw-card/</br></p></hgroup>',
     ''
@@ -140,22 +147,18 @@ const TitleWork = [
     '<b><font color="#686868">游戏职位：</font><font color="#931fff">高级管理员</font></b>',
     '<b><font color="#686868">游戏职位：</font><font color="#931fff">Discord 管理员</font></b>'
 ]
+//分类
 class Profile {
     constructor(avatar, freeavatar, freeavatarQQ, name, title, titlework, gameid, gameidon, about, level, club, clubcolor, site, bgcolor) {
-        if (title == 2 && avatar != 0 && avatar != 1) {
-            this.avatar = Avatar[avatar] + '<div class="avatar-right"><img src="./title/PlayerRarityHero.png" width="50" height="100%" /></div>'
-        } else if (title == 8 && avatar != 0 && avatar != 1) {
-            this.avatar = Avatar[avatar] + '<div class="avatar-right"><img src="./title/PlayerRarityLegend.png" width="50" height="100%" /></div>'
-        } else {
-            this.avatar = Avatar[avatar]
-        }
-        this.title28 = title
+        this.avatar = Avatar[avatar]
+        this.title = title
         this.titleavatar = avatar
         this.freeavatar = freeavatar
         this.freeavatarQQ = freeavatarQQ
         this.name = name
         this.title = Title[title]
         this.titlework = TitleWork[titlework]
+        //隐私判断
         if (gameid != "" && gameidon == "on") {
             this.gameid = gameid.substring(0, 7) + "****（隐私）"
         } else if (gameid != "") {
@@ -165,6 +168,7 @@ class Profile {
         }
         //this.gameid = gameid
         this.about = About[about]
+        //等级大小判断
         if (level < 0) {
             this.level = 1
         } else if (level > 61) {
@@ -173,6 +177,7 @@ class Profile {
             this.level = level
         }
         this.club = club
+        //舰队颜色判断
         if (clubcolor == '') {
             this.clubcolor = 1
         } else {
@@ -182,42 +187,51 @@ class Profile {
         this.bgcolor = bgcolor
     }
 }
+//输入
 function showResult(profile) {
     console.log(profile)
+    //头衔判断
     if (profile.avatar == '') {
         if (profile.freeavatar != '') {
-            if (profile.title28 == 2 && profile.titleavatar == 1) {
+            if (profile.title == '<b><font color="#ff9900">英雄</font></b>' && profile.titleavatar == 1) {
                 document.querySelector("#avatar").innerHTML = '<img class="avatar" src="' + profile.freeavatar + '" />' + '<div class="avatar-right"><img src="./title/PlayerRarityHero.png" width="50" height="100%" /></div>'
-            } else if (profile.title28 == 8 && profile.titleavatar == 1) {
+            } else if (profile.title == '<b><font color="#931fff">传奇</font></b>' && profile.titleavatar == 1) {
                 document.querySelector("#avatar").innerHTML = '<img class="avatar" src="' + profile.freeavatar + '" />' + '<div class="avatar-right"><img src="./title/PlayerRarityLegend.png" width="50" height="100%" /></div>'
             } else {
                 document.querySelector("#avatar").innerHTML = '<img class="avatar" src="' + profile.freeavatar + '" />'
             }
         } else if (profile.freeavatarQQ != '') {
-            if (profile.title28 == 2 && profile.titleavatar == 1) {
+            if (profile.title == '<b><font color="#ff9900">英雄</font></b>' && profile.titleavatar == 1) {
                 document.querySelector("#avatar").innerHTML = '<img class="avatar" src="https://q.qlogo.cn/headimg_dl?dst_uin=' + profile.freeavatarQQ + '&spec=640&img_type=jpg" />' + '<div class="avatar-right"><img src="./title/PlayerRarityHero.png" width="50" height="100%" /></div>'
-            } else if (profile.title28 == 8 && profile.titleavatar == 1) {
+            } else if (profile.title == '<b><font color="#931fff">传奇</font></b>' && profile.titleavatar == 1) {
                 document.querySelector("#avatar").innerHTML = '<img class="avatar" src="https://q.qlogo.cn/headimg_dl?dst_uin=' + profile.freeavatarQQ + '&spec=640&img_type=jpg" />' + '<div class="avatar-right"><img src="./title/PlayerRarityLegend.png" width="50" height="100%" /></div>'
             } else {
                 document.querySelector("#avatar").innerHTML = '<img class="avatar" src="https://q.qlogo.cn/headimg_dl?dst_uin=' + profile.freeavatarQQ + '&spec=640&img_type=jpg" />'
             }
         } else {
-            if (profile.title28 == 2 && profile.titleavatar == 1) {
+            if (profile.title == '<b><font color="#ff9900">英雄</font></b>' && profile.titleavatar == 1) {
                 document.querySelector("#avatar").innerHTML = '<img class="avatar" src="./Avatar/info.png" />' + '<div class="avatar-right"><img src="./title/PlayerRarityHero.png" width="50" height="100%" /></div>'
-            } else if (profile.title28 == 8 && profile.titleavatar == 1) {
+            } else if (profile.title == '<b><font color="#931fff">传奇</font></b>' && profile.titleavatar == 1) {
                 document.querySelector("#avatar").innerHTML = '<img class="avatar" src="./Avatar/info.png" />' + '<div class="avatar-right"><img src="./title/PlayerRarityLegend.png" width="50" height="100%" /></div>'
             } else {
                 document.querySelector("#avatar").innerHTML = '<img class="avatar" src="./Avatar/info.png" />'
             }
         }
     } else {
-        document.querySelector("#avatar").innerHTML = profile.avatar
+        if (profile.title == '<b><font color="#ff9900">英雄</font></b>' && profile.titleavatar != 0) {
+            document.querySelector("#avatar").innerHTML = profile.avatar + '<div class="avatar-right"><img src="./title/PlayerRarityHero.png" width="50" height="100%" /></div>'
+        } else if (profile.title == '<b><font color="#931fff">传奇</font></b>' && profile.titleavatar != 0) {
+            document.querySelector("#avatar").innerHTML = profile.avatar + '<div class="avatar-right"><img src="./title/PlayerRarityLegend.png" width="50" height="100%" /></div>'
+        } else {
+            document.querySelector("#avatar").innerHTML = profile.avatar
+        }
     }
-    document.querySelector("#name").innerText = profile.name
-    document.querySelector("#title").innerHTML = profile.title
+    document.querySelector("#name").innerHTML = '<font color="#686868">游戏昵称：</font>' + profile.name
+    document.querySelector("#title").innerHTML = '<font color="#686868">[' + profile.title + ']</font>'
     document.querySelector("#titlework").innerHTML = profile.titlework
     document.querySelector("#gameid").innerText = profile.gameid
     document.querySelector("#about").innerHTML = '<font color="#686868">最擅长舰种：</font>' + profile.about
+    //等级与舰队颜色判断
     if (profile.level <= 30) {
         document.querySelector("#level").innerHTML = '<font color="#686868">游戏等级：</font><font color="#63bbd0">' + profile.level + '</font>'
     } else {
@@ -230,12 +244,14 @@ function showResult(profile) {
     document.getElementById("bgcolor").style.backgroundColor = profile.bgcolor
     document.querySelector("#link").innerHTML = '<input type="text" value="' + window.location.href + '" readonly />'
 }
+//链接
 function tryGetParam(params, prop) {
     if (params.has(prop)) {
         return params.get(prop)
     }
     return ""
 }
+//图片生成
 async function savePicture() {
     await html2canvas(document.querySelector("#main"), {
         windowHeight: 700,
