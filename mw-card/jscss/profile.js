@@ -1,29 +1,3 @@
-/*
- *                        _oo0oo_
- *                       o8888888o
- *                       88" . "88
- *                       (| -_- |)
- *                       0\  =  /0
- *                     ___/`---'\___
- *                   .' \\|     |// '.
- *                  / \\|||  :  |||// \
- *                 / _||||| -:- |||||- \
- *                |   | \\\  - /// |   |
- *                | \_|  ''\---/''  |_/ |
- *                \  .-\__  '-'  ___/-. /
- *              ___'. .'  /--.--\  `. .'___
- *           ."" '<  `.___\_<|>_/___.' >' "".
- *          | | :  `- \`.;`\ _ /`;.`/ - ` : | |
- *          \  \ `_.   \_ __\ /__ _/   .-` /  /
- *      =====`-.____`.___ \_____/___.-`___.-'=====
- *                        `=---='
- * 
- * 
- *      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * 
- *            佛祖保佑     屎山代码     永无BUG
- */
-
 //网站运行
 
 //素材
@@ -109,7 +83,12 @@ class Profile {
         this.freeavatar = freeavatar
         this.freeavatarQQ = freeavatarQQ
         this.name = name
-        this.title = Title[title]
+        //头衔判断
+        if (title == 0) {
+            this.title = Title[title]
+        } else {
+            this.title = '<font color="#686868">[' + Title[title] + ']</font>'
+        }
         this.titlework = TitleWork[titlework]
         //隐私判断
         if (gameid != "" && gameidon == "on") {
@@ -180,7 +159,7 @@ function showResult(profile) {
         }
     }
     document.querySelector("#name").innerHTML = '<font color="#686868">游戏昵称：</font>' + profile.name
-    document.querySelector("#title").innerHTML = '<font color="#686868">[' + profile.title + ']</font>'
+    document.querySelector("#title").innerHTML = profile.title
     document.querySelector("#titlework").innerHTML = profile.titlework
     document.querySelector("#gameid").innerText = profile.gameid
     document.querySelector("#about").innerHTML = '<font color="#686868">最擅长舰种：</font>' + profile.about
