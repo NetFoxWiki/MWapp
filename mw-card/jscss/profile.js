@@ -125,34 +125,34 @@ function showResult(profile) {
     //头衔判断
     if (profile.avatar == '') {
         if (profile.freeavatar != '') {
-            if (profile.title == '<b><font color="#ff9900">英雄</font></b>' && profile.titleavatar == 1) {
+            if (profile.title == '<font color="#686868">[<b><font color="#ff9900">英雄</font></b>]</font>' && profile.titleavatar == 1) {
                 document.querySelector("#avatar").innerHTML = '<img class="avatar" src="' + profile.freeavatar + '" />' + '<div class="avatar-right"><img src="./title/PlayerRarityHero.png" width="50" height="100%" /></div>'
-            } else if (profile.title == '<b><font color="#931fff">传奇</font></b>' && profile.titleavatar == 1) {
+            } else if (profile.title == '<font color="#686868">[<b><font color="#931fff">传奇</font></b>]</font>' && profile.titleavatar == 1) {
                 document.querySelector("#avatar").innerHTML = '<img class="avatar" src="' + profile.freeavatar + '" />' + '<div class="avatar-right"><img src="./title/PlayerRarityLegend.png" width="50" height="100%" /></div>'
             } else {
                 document.querySelector("#avatar").innerHTML = '<img class="avatar" src="' + profile.freeavatar + '" />'
             }
         } else if (profile.freeavatarQQ != '') {
-            if (profile.title == '<b><font color="#ff9900">英雄</font></b>' && profile.titleavatar == 1) {
+            if (profile.title == '<font color="#686868">[<b><font color="#ff9900">英雄</font></b>]</font>' && profile.titleavatar == 1) {
                 document.querySelector("#avatar").innerHTML = '<img class="avatar" src="https://q.qlogo.cn/headimg_dl?dst_uin=' + profile.freeavatarQQ + '&spec=640&img_type=jpg" />' + '<div class="avatar-right"><img src="./title/PlayerRarityHero.png" width="50" height="100%" /></div>'
-            } else if (profile.title == '<b><font color="#931fff">传奇</font></b>' && profile.titleavatar == 1) {
+            } else if (profile.title == '<font color="#686868">[<b><font color="#931fff">传奇</font></b>]</font>' && profile.titleavatar == 1) {
                 document.querySelector("#avatar").innerHTML = '<img class="avatar" src="https://q.qlogo.cn/headimg_dl?dst_uin=' + profile.freeavatarQQ + '&spec=640&img_type=jpg" />' + '<div class="avatar-right"><img src="./title/PlayerRarityLegend.png" width="50" height="100%" /></div>'
             } else {
                 document.querySelector("#avatar").innerHTML = '<img class="avatar" src="https://q.qlogo.cn/headimg_dl?dst_uin=' + profile.freeavatarQQ + '&spec=640&img_type=jpg" />'
             }
         } else {
-            if (profile.title == '<b><font color="#ff9900">英雄</font></b>' && profile.titleavatar == 1) {
+            if (profile.title == '<font color="#686868">[<b><font color="#ff9900">英雄</font></b>]</font>' && profile.titleavatar == 1) {
                 document.querySelector("#avatar").innerHTML = '<img class="avatar" src="./Avatar/info.png" />' + '<div class="avatar-right"><img src="./title/PlayerRarityHero.png" width="50" height="100%" /></div>'
-            } else if (profile.title == '<b><font color="#931fff">传奇</font></b>' && profile.titleavatar == 1) {
+            } else if (profile.title == '<font color="#686868">[<b><font color="#931fff">传奇</font></b>]</font>' && profile.titleavatar == 1) {
                 document.querySelector("#avatar").innerHTML = '<img class="avatar" src="./Avatar/info.png" />' + '<div class="avatar-right"><img src="./title/PlayerRarityLegend.png" width="50" height="100%" /></div>'
             } else {
                 document.querySelector("#avatar").innerHTML = '<img class="avatar" src="./Avatar/info.png" />'
             }
         }
     } else {
-        if (profile.title == '<b><font color="#ff9900">英雄</font></b>' && profile.titleavatar != 0) {
+        if (profile.title == '<font color="#686868">[<b><font color="#ff9900">英雄</font></b>]</font>' && profile.titleavatar != 0) {
             document.querySelector("#avatar").innerHTML = profile.avatar + '<div class="avatar-right"><img src="./title/PlayerRarityHero.png" width="50" height="100%" /></div>'
-        } else if (profile.title == '<b><font color="#931fff">传奇</font></b>' && profile.titleavatar != 0) {
+        } else if (profile.title == '<font color="#686868">[<b><font color="#931fff">传奇</font></b>]</font>' && profile.titleavatar != 0) {
             document.querySelector("#avatar").innerHTML = profile.avatar + '<div class="avatar-right"><img src="./title/PlayerRarityLegend.png" width="50" height="100%" /></div>'
         } else {
             document.querySelector("#avatar").innerHTML = profile.avatar
