@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./jscss/pico.min.css" />
+    <link rel="icon" href="https://mwdocs.info/favicon.ico">
+    <title>现代战舰资料卡生成v2</title>
+</head>
+<style>
+    html,
+    body {
+        background-color: #f0f0f0;
+    }
+
+    .text-68 {
+        color: #686868;
+    }
+
+    @media screen and (min-width: 1340px) {
+        .pc {
+            margin: 0 auto;
+            max-width: 60%;
+        }
+    }
+
+    .text-shuiyin {
+        color: #9dabb3;
+    }
+
+    .avatar-box {
+        position: relative;
+        width: 140px;
+    }
+
+    .avatar {
+        border-radius: 25% 10%;
+        width: 140px;
+        height: 140px;
+    }
+
+    .avatar-right {
+        position: absolute;
+        bottom: 1px;
+        right: 10px;
+    }
+
+    .level.is-mobile .level-left {
+        display: flex;
+    }
+
+    .level-item {
+        margin-bottom: 0;
+        margin-right: 0.75rem;
+    }
+
+    .article-licensing {
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+        margin-bottom: var(--pico-block-spacing-vertical);
+        padding: var(--pico-block-spacing-vertical) var(--pico-block-spacing-horizontal);
+        border-radius: var(--pico-border-radius);
+    }
+
+    .article-licensingafter {
+        position: absolute;
+        z-index: -1;
+        right: -20px;
+        top: 50px;
+        opacity: 0.1;
+    }
+</style>
+
+
+<body>
+    <div class="pc">
+        <main class="container">
+            <hgroup style="margin-top: 40px;">
+                <h1 class="text-68">现代战舰资料卡生成v2</h1>
+                <b class="text-68">*由 MW & MWT 文档 提供支持丨B站UP <a href="https://space.bilibili.com/1093209533">阿布咕咕</a>
+                    制作</b>
+            </hgroup>
+            <article>
+                <img id="img" src="" /><br /><b class="text-68">*存放图片的地方 [长按/右键图片保存]</b>
+                <button class="outline" style="width: 100%;" onclick="savePicture()">
+                    生成图片
+                </button>
+            </article>
+            <article>
+                <form>
+                    <input role="button" class="outline" value="恢复默认" type="reset" />
+                    <label>
+                        <h5>自定义头像</h5>
+                    </label>
+                    <input type="file" id="img_upload" />
+                    <script type="text/javascript">
+                        window.onload = function () {
+                            var img_upload = document.getElementById("img_upload");
+                            var avatar = document.getElementById("avatar");
+                            img_upload.addEventListener('change', readFile, false);
+                        }
+                        function readFile() {
+                            var file = this.files[0];
+                            if (!/image\/\w+/.test(file.type)) {
+                                alert("请确保文件为图片类型");
+                                return false;
+                            }
+                            var reader = new FileReader();
+                            reader.readAsDataURL(file);
+                            reader.onload = function () {
+                                avatar = document.getElementById("avatar").src = this.result;
+                            }
+                        }
+                    </script>
+                    <hr>
+                    <label>
+                        <h5>游戏昵称：</h5>
+                    </label>
+                    <input type="text" placeholder="游戏昵称" minlength="3" maxlength="25" id="name"
+                        oninput='document.getElementById("show-name").innerHTML = $("#name").val();' />
+                    <h5>选择游戏头衔：</h5>
+                    <label>
+                        <h6>选择正常游戏头衔</h6>
+                    </label>
+                    <select id="title" onchange='titlejs($("#title").val())'>
+                        <option value="0" selected>无</option>
+                        <option value="1">英雄</option>
+                        <option value="2">传奇</option>
+                        <option value="3">教官</option>
+                        <option value="4">创作者</option>
+                        <option value="5">管理员</option>
+                        <option value="6">高级管理员</option>
+                        <option value="7">Discord 管理员</option>
+                    </select>
+                    <label>
+                        <h5>游戏ID：</h5>
+                    </label>
+                    <label>
+                        <input type="checkbox" role="switch" id="idhid" checked
+                            onclick='idHidjs($("#idhid").prop("checked"))' />
+                        隐私游戏ID（默认开启）
+                    </label>
+                    <input type="text" placeholder="游戏ID" minlength="13" id="gameid"
+                        oninput='idHidjs($("#idhid").prop("checked"))' />
+                    <label>
+                        <h5>游戏简历：</h5>
+                    </label>
+                    <label>
+                        <h6>选择最擅长舰种</h6>
+                    </label>
+                    <select id="ships" onchange='shipsjs($("#ships").val())'>
+                        <option value="0" selected>无</option>
+                        <option value="1">轻型巡航舰</option>
+                        <option value="2">护卫舰</option>
+                        <option value="3">驱逐舰</option>
+                        <option value="4">巡洋舰</option>
+                        <option value="5">战列舰</option>
+                        <option value="6">航空母舰</option>
+                        <option value="7">潜艇</option>
+                        <option value="8">地效飞行器</option>
+                        <option value="9">突击航空母舰</option>
+                        <option value="10">空天航母</option>
+                    </select>
+                    <label>
+                        <h6>游戏等级</h6>
+                    </label>
+                    <input type="number" placeholder="游戏等级" minlength="1" maxlength="2" min="1" max="61" id="level"
+                        id="level" oninput='leveljs($("#level").val())' />
+                    <label>
+                        <h6>所在舰队</h6>
+                    </label>
+                    <input type="text" placeholder="所在舰队（选填）" minlength="3" maxlength="18" id="club"
+                        oninput='document.getElementById("show-club").innerHTML = $("#club").val();' />
+                    <select onchange='clubcolorjs($("#clubcolor").val())' id="clubcolor">
+                        <option value="0" selected>黑色</option>
+                        <option value="1">绿色</option>
+                        <option value="2">黄色</option>
+                        <option value="3">蓝色</option>
+                        <option value="4">紫色</option>
+                        <option value="5">棕色</option>
+                        <option value="6">肉色</option>
+                        <option value="7">红色</option>
+                    </select>
+                </form>
+            </article>
+            <div id="main">
+                <img width="100%" src="./img/map.png" />
+                <article>
+                    <div class="avatar-box">
+                        <img class="avatar" id="avatar" src="./img/AvatarPortrait_Hacker_Widget.png" />
+                    </div>
+                    <br>
+                    <div class="level-left">
+                        <div class="level-item">
+                            <h5>昵称/头衔</h5>
+                            <b>
+                                <b class="text-68">游戏昵称：</b>
+                                <font color="#0f59a4"><b id="show-name">......</b></font>
+                            </b>
+                            <br>
+                            <b>
+                                <b class="text-68">游戏头衔：</b>
+                                <b id="show-title">
+                                    <font color="#0f59a4">无</font>
+                                </b>
+                            </b>
+                        </div>
+                        <br>
+                        <div class="level-item">
+                            <h5>游戏ID</h5>
+                            <font color="#0f59a4"><b id="show-gameid">......</b></font>
+                        </div>
+                        <br>
+                        <div class="level-item">
+                            <h5>游戏简历</h5>
+                            <b><b class="text-68">擅长舰种：</b>
+                                <font color="#0f59a4"><b id="show-ships">无</b></font>
+                            </b>
+                            <br />
+                            <b><b class="text-68">游戏等级：</b>
+                                <font color="#0f59a4"><b id="show-level">1</b></font>
+                            </b>
+                            <br />
+                            <b><b class="text-68">所在舰队：</b>
+                                <font id="show-clubcolor" color=""><b id="show-club">不在任何舰队</b></font>
+                            </b>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 15px; margin-bottom: -15px">
+                        <small class="text-shuiyin">由 现代战舰资料卡生成v2 提供支持</small>
+                    </div>
+                </article>
+            </div>
+            <article style="text-align: center;">
+                <b class="text-68">© 2024 现代战舰资料卡生成v2. All rights reserved.</b>
+            </article>
+        </main>
+    </div>
+</body>
+<script src="./jscss/jquery-3.7.1.min.js"></script>
+<script src="./jscss/html2canvas.min.js"></script>
+<script src="./jscss/profile.js"></script>
+<script>
+    async function savePicture() {
+        await html2canvas(document.querySelector("#main"), {
+            windowHeight: 700,
+            windowWidth: 452,
+            scale: 2
+        }).then(
+            async function (canvas) {
+                canvas = canvas.toDataURL("image/png", 1);
+                document.getElementById("img").setAttribute("src", canvas);
+            }
+        );
+    }
+</script>
+
+</html>
