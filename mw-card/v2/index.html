@@ -24,54 +24,38 @@
         }
     }
 
+    .text-h {
+        display: inline-block;
+        height: 3px;
+        width: 100px;
+        margin-bottom: calc(var(--pico-spacing) * .5);
+        border-radius: 0.25rem;
+        background-color: #144a74;
+    }
+
     .text-shuiyin {
         color: #9dabb3;
     }
 
     .avatar-box {
         position: relative;
-        width: 140px;
+        width: 170px;
+        height: 170px;
+        float: right;
     }
 
     .avatar {
         border-radius: 25% 10%;
-        width: 140px;
-        height: 140px;
+        width: 170px;
+        height: 170px;
     }
 
-    .avatar-right {
+    .avatar-title {
         position: absolute;
         bottom: 1px;
         right: 10px;
     }
-
-    .level.is-mobile .level-left {
-        display: flex;
-    }
-
-    .level-item {
-        margin-bottom: 0;
-        margin-right: 0.75rem;
-    }
-
-    .article-licensing {
-        overflow: hidden;
-        position: relative;
-        z-index: 1;
-        margin-bottom: var(--pico-block-spacing-vertical);
-        padding: var(--pico-block-spacing-vertical) var(--pico-block-spacing-horizontal);
-        border-radius: var(--pico-border-radius);
-    }
-
-    .article-licensingafter {
-        position: absolute;
-        z-index: -1;
-        right: -20px;
-        top: 50px;
-        opacity: 0.1;
-    }
 </style>
-
 
 <body>
     <div class="pc">
@@ -97,7 +81,6 @@
                     <script type="text/javascript">
                         window.onload = function () {
                             var img_upload = document.getElementById("img_upload");
-                            var avatar = document.getElementById("avatar");
                             img_upload.addEventListener('change', readFile, false);
                         }
                         function readFile() {
@@ -109,11 +92,10 @@
                             var reader = new FileReader();
                             reader.readAsDataURL(file);
                             reader.onload = function () {
-                                avatar = document.getElementById("avatar").src = this.result;
+                                document.getElementById("avatar").src = this.result;
                             }
                         }
                     </script>
-                    <hr>
                     <label>
                         <h5>游戏昵称：</h5>
                     </label>
@@ -191,12 +173,14 @@
                         <img class="avatar" id="avatar" src="./img/AvatarPortrait_Hacker_Widget.png" />
                     </div>
                     <br>
-                    <div class="level-left">
-                        <div class="level-item">
-                            <h5>昵称/头衔</h5>
+                    <div style="margin-top: -30px;">
+                        <hgroup>
+                            <h2>昵称/头衔</h2>
+                            <span class="text-h"></span>
+                            <br>
                             <b>
                                 <b class="text-68">游戏昵称：</b>
-                                <font color="#0f59a4"><b id="show-name">......</b></font>
+                                <font color="#495c69"><b id="show-name">......</b></font>
                             </b>
                             <br>
                             <b>
@@ -205,29 +189,35 @@
                                     <font color="#0f59a4">无</font>
                                 </b>
                             </b>
-                        </div>
-                        <br>
-                        <div class="level-item">
-                            <h5>游戏ID</h5>
-                            <font color="#0f59a4"><b id="show-gameid">......</b></font>
-                        </div>
-                        <br>
-                        <div class="level-item">
-                            <h5>游戏简历</h5>
+                        </hgroup>
+                    </div>
+                    <div>
+                        <hgroup>
+                            <h2>游戏ID</h2>
+                            <span class="text-h"></span>
+                            <br>
+                            <font color="#495c69"><b id="show-gameid">......</b></font>
+                        </hgroup>
+                    </div>
+                    <div>
+                        <hgroup>
+                            <h2>游戏简历</h2>
+                            <span class="text-h"></span>
+                            <br>
                             <b><b class="text-68">擅长舰种：</b>
                                 <font color="#0f59a4"><b id="show-ships">无</b></font>
                             </b>
                             <br />
                             <b><b class="text-68">游戏等级：</b>
-                                <font color="#0f59a4"><b id="show-level">1</b></font>
+                                <font color="#f9bd10"><b id="show-level">1</b></font>
                             </b>
                             <br />
                             <b><b class="text-68">所在舰队：</b>
                                 <font id="show-clubcolor" color=""><b id="show-club">不在任何舰队</b></font>
                             </b>
-                        </div>
+                        </hgroup>
                     </div>
-                    <div style="text-align: center; margin-top: 15px; margin-bottom: -15px">
+                    <div style="text-align: center; margin: -15px;">
                         <small class="text-shuiyin">由 现代战舰资料卡生成v2 提供支持</small>
                     </div>
                 </article>

@@ -1,7 +1,7 @@
 const Clubcolor = [
     '#000000',
     '#9ede7c',
-    '#c9c93b',
+    '#f1ca17',
     '#75b7d8',
     '#b38ae7',
     '#d69b59',
