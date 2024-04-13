@@ -2,7 +2,7 @@
 
 //素材
 const Site = [
-    '<br /><div class= "qr"><img width="110" height="100%" src="./img/qr.png"></div><hgroup><h3>现代战舰资料卡生成</h3><p><b>扫描二维码体验<br />https://mwapp.mwdocs.info/mw-card/</br></p></hgroup>',
+    '<br /><div class= "qr"><img width="110" height="100%" src="./img/qr.png"></div><hgroup><h3>现代战舰资料卡生成</h3><p><b>扫描二维码体验<br />https://mwapp.netfox.wiki/mw-card/</br></p></hgroup>',
     ''
 ]
 const Clubcolor = [
